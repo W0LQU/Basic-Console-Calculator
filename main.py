@@ -36,8 +36,10 @@ import re
 while True:
     kalk = input("podaj wyrażenie matematyczne używając +, -, *, /: ")
 
+
+    kalk = kalk.replace(",", ".")
     wyciaganie_liczb = re.split(r"[+\-\*\/]", kalk)
-    wyciaganie_symboli = re.split(r"\d+", kalk)
+    wyciaganie_symboli = re.findall(r"[+\-\*\/]", kalk)
 
     czyste_liczby = []
     czyste_symbole = []

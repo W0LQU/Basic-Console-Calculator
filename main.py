@@ -26,3 +26,61 @@
 #    else:
 #        obliczenie = Liczba_1 / Liczba_2
 #        print("Wynik dzielenia to: ", obliczenie)"
+
+
+#-------------automatyczny kalkulator-------------
+
+
+import re
+#przykład wyrażenia: 5+5*25
+while True:
+    kalk = input("podaj wyrażenie matematyczne używając +, -, *, /: ")
+
+    wyciaganie_liczb = re.split(r"[+\-\*\/]", kalk)
+    wyciaganie_symboli = re.split(r"\d+", kalk)
+
+    czyste_liczby = []
+    czyste_symbole = []
+
+    for podzielone_liczby in wyciaganie_liczb:
+        podzielone_liczby = float(podzielone_liczby)
+        czyste_liczby.append(float(podzielone_liczby))
+
+
+    for symbol in wyciaganie_symboli:
+        if symbol != "":
+            czyste_symbole.append(symbol)
+
+    i = 0
+    while i < len(czyste_symbole):
+        symbol = czyste_symbole[i]
+        if symbol == "*":
+            wynik = czyste_liczby[i] * czyste_liczby[i+1]
+            czyste_liczby[i] = wynik
+            czyste_liczby.pop(i+1)
+            czyste_symbole.pop(i)
+        elif symbol == "/":
+            wynik = czyste_liczby[i] / czyste_liczby[i+1]
+            czyste_liczby[i] = wynik
+            czyste_liczby.pop(i+1)
+            czyste_symbole.pop(i)
+        else:
+            i += 1
+    i = 0
+    while i < len(czyste_symbole):
+        symbol = czyste_symbole[i]
+        if symbol == "+":
+            wynik = czyste_liczby[i] + czyste_liczby[i+1]
+            czyste_liczby[i] = wynik
+            czyste_liczby.pop(i+1)
+            czyste_symbole.pop(i)
+        elif symbol == "-":
+                wynik = czyste_liczby[i] - czyste_liczby[i+1]
+                czyste_liczby[i] = wynik
+                czyste_liczby.pop(i+1)
+                czyste_symbole.pop(i)
+        else:
+            i += 1
+
+
+    print("wynik to", czyste_liczby[0])

@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Aktualny plik",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Uruchom main.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Uruchom stats.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/stats.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}
